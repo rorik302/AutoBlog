@@ -1,0 +1,29 @@
+{% extends 'auth/base.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block header %}
+    <span class="h5">Авторизация</span>
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {{ form.csrf_token }}
+
+        {% for field in form if field.name != 'csrf_token' %}
+            <div class="form-group">
+                <label for="{{ field.id }}">{{ field.label }}</label>
+                {{ field(class_="form-control") }}
+            </div>
+        {% endfor %}
+
+        <hr>
+
+        <input type="submit" value="Войти" class="btn btn-success btn-block">
+    </form>
+
+    <div class="small mt-2 text-center">
+        <span>Нет аккаунта?</span>
+        <a href="{{ url_for('auth_app.registration') }}">Зарегистрироваться</a>
+    </div>
+{% endblock %}
