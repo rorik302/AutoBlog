@@ -1,4 +1,5 @@
 from flask import render_template, Blueprint, request, redirect, url_for
+from flask_login import login_user, logout_user
 
 from forms import LoginForm, RegistrationForm
 from models import User
@@ -10,6 +11,10 @@ auth_app = Blueprint("auth_app", __name__)
 @auth_app.route("/login/", methods=["GET", "POST"], endpoint="login")
 def login():
     form = LoginForm()
+    if request.method == "POST" and form.validate():
+        user = Session.query(User).filter_by(username=form.username.data).first()
+        login_user(user)
+        return redirect(url_for("main"))
     return render_template("auth/login.html", form=form)
 
 
@@ -23,5 +28,14 @@ def registration():
         )
         Session.add(user)
         Session.commit()
+
+        login_user(user)
+
         return redirect(url_for("main"))
     return render_template("auth/registration.html", form=form)
+
+
+@auth_app.route("/logout/", endpoint="logout")
+def logout():
+    logout_user()
+    return redirect(url_for("main"))

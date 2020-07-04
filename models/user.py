@@ -1,11 +1,12 @@
 import hashlib
 
+from flask_login import UserMixin
 from sqlalchemy import Column, String
 
 from .base import Base
 
 
-class User(Base):
+class User(Base, UserMixin):
     username = Column(String, nullable=False, unique=True)
     _password = Column("password", String, nullable=False)
 

@@ -1,3 +1,5 @@
+import hashlib
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import DataRequired
@@ -12,7 +14,19 @@ class AuthForm(FlaskForm):
 
 
 class LoginForm(AuthForm):
-    pass
+    def get_user(self, username):
+        return Session.query(User).filter_by(username=username).first()
+
+
+    def validate_username(self, field):
+        if not self.get_user(field.data):
+            field.errors.append("Пользователь с таким логином не зарегистрирован")
+
+
+    def validate_password(self, field):
+        user = self.get_user(self.username.data)
+        if user and (not user.password == User.hash_password(field.data)):
+            field.errors.append("Неправильный пароль")
 
 
 class RegistrationForm(AuthForm):

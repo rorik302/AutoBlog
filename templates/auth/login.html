@@ -7,6 +7,16 @@
 {% endblock %}
 
 {% block body %}
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            {% for field in form.errors %}
+                {% for error in form.errors[field] %}
+                    <span class="row m-0">{{ error }}</span>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <form method="post">
         {{ form.csrf_token }}
 

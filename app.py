@@ -1,5 +1,7 @@
 from flask import Flask, render_template
+from flask_login import LoginManager
 
+from models import User
 from models.db import Session
 from views.auth import auth_app
 
@@ -9,10 +11,18 @@ app.config.update(
     SECRET_KEY="7zWV@9&BKn6!SFXKhEioZ!6kHvLgKj8Q"
 )
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 app.register_blueprint(auth_app, url_prefix="/auth")
 
 
-@app.route("/")
+@login_manager.user_loader
+def load_user(user_id):
+    return Session.query(User).filter_by(id=user_id).one_or_none()
+
+
+@app.route("/", endpoint="main")
 def main():
     return render_template("index.html")
 
