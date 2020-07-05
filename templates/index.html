@@ -10,7 +10,8 @@
             <div class="post-header">
                 {{ post.title }}
                 {% if current_user == post.user %}
-                    <a href="#" class="post-edit btn btn-sm btn-outline-primary">
+                    <a href="{{ url_for("posts_app.update", post_id=post.id) }}"
+                       class="post-edit btn btn-sm btn-outline-primary">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -23,10 +24,15 @@
             </div>
             <div class="post-body">
                 <div class="post-image">
-                    <img src="{{ url_for('static', filename='img/' + post.image) }}" alt="">
+                    <img alt="" src="
+                        {% if post.image_url %}
+                            {{ post.image_url }}
+                        {% else %}
+                            {{ url_for('static', filename='img/car-icon-md.png') }}
+                        {% endif %}">
                 </div>
                 <div class="post-text">
-                    <p>{{ post.text }}</p>
+                    <p>{{ post.text[:300] }} ... <a href="#">Читать полностью</a></p>
                 </div>
             </div>
             <div class="post-footer">

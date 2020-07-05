@@ -29,9 +29,7 @@ def load_user(user_id):
 @app.route("/", endpoint="main")
 def main():
     posts = Session.query(Post).order_by(Post.created)
-    for post in posts:
-        print(post.image)
-    return render_template("index.html", posts=posts, images_dir=IMAGES_DIR)
+    return render_template("index.html", posts=posts)
 
 
 @app.teardown_request

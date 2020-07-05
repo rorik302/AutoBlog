@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileRequired
 from wtforms import StringField, TextAreaField
-from wtforms.validators import DataRequired
+from wtforms.validators import InputRequired
 
 
 class PostForm(FlaskForm):
-    title = StringField("Заголовок", validators=[DataRequired()])
-    image = FileField("Картинка")
-    text = TextAreaField("Текст", validators=[DataRequired()], render_kw={'rows': 20})
+    title = StringField("Заголовок", validators=[InputRequired()])
+    image_url = StringField("URL картинки")
+    text = TextAreaField("Текст", validators=[InputRequired()], render_kw={'rows': 20})

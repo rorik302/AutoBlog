@@ -10,14 +10,14 @@ from models.base import Base
 class Post(Base):
     title = Column(String, nullable=False)
     text = Column(Text, nullable=False)
-    image = Column(String)
+    image_url = Column(String)
     user_id = Column(Integer, ForeignKey(User.id), nullable=False)
     user = relationship(User)
     created = Column(DateTime, default=datetime.now())
 
 
-    def __init__(self, title, text, image, user_id):
+    def __init__(self, title, text, image_url, user_id):
         self.title = title
         self.text = text
-        self.image = image
+        self.image_url = image_url
         self.user_id = user_id

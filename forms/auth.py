@@ -1,14 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
-from wtforms.validators import DataRequired
+from wtforms.validators import InputRequired
 
 from models import User
 from models.db import Session
 
 
 class AuthForm(FlaskForm):
-    username = StringField("Логин", validators=[DataRequired()])
-    password = PasswordField("Пароль", validators=[DataRequired()])
+    username = StringField("Логин", validators=[InputRequired()])
+    password = PasswordField("Пароль", validators=[InputRequired()])
 
 
 class LoginForm(AuthForm):
@@ -28,7 +28,7 @@ class LoginForm(AuthForm):
 
 
 class RegistrationForm(AuthForm):
-    confirm = PasswordField("Подтверждение пароля", validators=[DataRequired()])
+    confirm = PasswordField("Подтверждение пароля", validators=[InputRequired()])
 
     def validate_username(self, field):
         if len(field.data) < 6:

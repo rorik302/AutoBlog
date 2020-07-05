@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, redirect, url_for
+from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
 
 from forms.auth import LoginForm, RegistrationForm
@@ -29,6 +29,10 @@ def registration():
         Session.add(user)
         Session.commit()
 
+        flash(
+            message=f'Пользователь {user.username} успешно зарегистрирован',
+            category='success'
+        )
         return redirect(url_for("auth_app.login"))
     return render_template("auth/registration.html", form=form)
 

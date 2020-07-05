@@ -5,7 +5,7 @@
 {% block body %}
     <div class="card">
         <div class="card-body">
-            <form method="post" action="{{ url_for('posts_app.create') }}" enctype="multipart/form-data">
+            <form method="post" action="{% block form_action %}{{ url_for('posts_app.create') }}{% endblock %}" enctype="multipart/form-data">
                 {{ form.csrf_token }}
                 {% for field in form if field.name != 'csrf_token' %}
                     <div class="form-group">
