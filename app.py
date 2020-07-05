@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from models import User
 from models.db import Session
 from views.auth import auth_app
+from views.posts import posts_app
 
 app = Flask(__name__)
 app.config.update(
@@ -15,6 +16,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 app.register_blueprint(auth_app, url_prefix="/auth")
+app.register_blueprint(posts_app, url_prefix="/posts")
 
 
 @login_manager.user_loader
