@@ -1,7 +1,9 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 
-from models import User
+from config import IMAGES_DIR
+from models import Post
+from models.user import User
 from models.db import Session
 from views.auth import auth_app
 from views.posts import posts_app
@@ -26,7 +28,10 @@ def load_user(user_id):
 
 @app.route("/", endpoint="main")
 def main():
-    return render_template("index.html")
+    posts = Session.query(Post).order_by(Post.created)
+    for post in posts:
+        print(post.image)
+    return render_template("index.html", posts=posts, images_dir=IMAGES_DIR)
 
 
 @app.teardown_request

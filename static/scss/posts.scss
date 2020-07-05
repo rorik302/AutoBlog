@@ -1,0 +1,41 @@
+$border-radius: 0.25rem;
+$border-style: 1px solid #ced4da;
+
+.post {
+  border: 1px solid #ced4da;
+  border-radius: $border-radius;
+  margin-bottom: 1rem;
+  .post-body {
+    display: flex;
+  }
+  .post-header {
+    padding: .25rem;
+    font-size: 1.35rem;
+    text-align: center;
+    border-bottom: $border-style;
+    background-color: rgba(0, 0, 0, .05);
+    .post-edit {
+      float: right;
+    }
+  }
+  .post-image {
+    max-width: 25%;
+    padding: 0.25rem;
+    border-right: $border-style;
+    & > img {
+      display: block;
+      width: 100%;
+      border-radius: $border-radius;
+    }
+  }
+  .post-text {
+    padding: .25rem;
+    width: 100%;
+    word-break: break-word;
+  }
+  .post-footer {
+    border-top: $border-style;
+    padding: 0 .5rem;
+    font-size: .65rem;
+  }
+}

@@ -1,0 +1,40 @@
+.post {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+.post .post-body {
+  display: flex;
+}
+.post .post-header {
+  padding: 0.25rem;
+  font-size: 1.35rem;
+  text-align: center;
+  border-bottom: 1px solid #ced4da;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.post .post-header .post-edit {
+  float: right;
+}
+.post .post-image {
+  max-width: 25%;
+  padding: 0.25rem;
+  border-right: 1px solid #ced4da;
+}
+.post .post-image > img {
+  display: block;
+  width: 100%;
+  border-radius: 0.25rem;
+}
+.post .post-text {
+  padding: 0.25rem;
+  width: 100%;
+  word-break: break-word;
+}
+.post .post-footer {
+  border-top: 1px solid #ced4da;
+  padding: 0 0.5rem;
+  font-size: 0.65rem;
+}
+
+/*# sourceMappingURL=posts.css.map */
