@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-body">
+            <form method="post" action="{% block form_action %}{% endblock %}">
+                {{ form.csrf_token }}
+                {% for field in form if field.name != 'csrf_token' %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+                        {% if field.name != 'image_url' %}
+                            {{ field(class_='form-control') }}
+                        {% else %}
+                            <div class="image-wrapper">
+                                {{ field(class_='form-control image-url') }}
+                                <img src="{{ field.data }}" alt="" class="post-image">
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-success btn-block">Сохранить</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const imageField = document.querySelector('.image-url')
+        const image = document.querySelector('.image-wrapper img')
+        imageField.addEventListener('focusout', function () {
+            url = imageField.value
+            image.setAttribute('src', url)
+        })
+        console.log(imageField)
+    </script>
+{% endblock %}

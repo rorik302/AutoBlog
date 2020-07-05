@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 
-from config import IMAGES_DIR
 from models import Post
 from models.user import User
 from models.db import Session

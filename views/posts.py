@@ -31,7 +31,8 @@ def update_post(post_id):
     if request.method == "POST" and form.validate():
         post.title = request.form.get('title')
         post.text = request.form.get('text')
-        post.image = request.files.get('image')
-        print(Session.dirty)
+        post.image_url = request.form.get('image_url')
+
+        Session.commit()
         return redirect(url_for("main"))
     return render_template("posts/post_update.html", form=form, post_id=post.id)

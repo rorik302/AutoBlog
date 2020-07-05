@@ -1,3 +1,3 @@
-{% extends 'posts/post_create.html' %}
+{% extends 'posts/base.html' %}
 
 {% block form_action %}{{ url_for('posts_app.update', post_id=post_id) }}{% endblock %}

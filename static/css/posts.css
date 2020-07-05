@@ -37,4 +37,9 @@
   font-size: 0.65rem;
 }
 
-/*# sourceMappingURL=posts.css.map */
+.image-wrapper .post-image {
+  max-width: 200px;
+  margin-top: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}

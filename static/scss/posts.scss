@@ -39,3 +39,11 @@ $border-style: 1px solid #ced4da;
     font-size: .65rem;
   }
 }
+.image-wrapper {
+  .post-image {
+    max-width: 200px;
+    margin-top: 1rem;
+    border: $border-style;
+    border-radius: $border-radius;
+  }
+}
