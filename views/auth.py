@@ -29,9 +29,7 @@ def registration():
         Session.add(user)
         Session.commit()
 
-        login_user(user)
-
-        return redirect(url_for("main"))
+        return redirect(url_for("auth_app.login"))
     return render_template("auth/registration.html", form=form)
 
 
