@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 
-from models import User
-from models.db import Session
+from project.models import User
+from project.models import Session
 
 users_app = Blueprint("users_app", __name__)
 

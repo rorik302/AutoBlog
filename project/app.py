@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 
-from models import Post
-from models.user import User
-from models.db import Session
-from views.auth import auth_app
-from views.posts import posts_app
-from views.users import users_app
+from project.models import Post
+from project.models import User
+from project.models import Session
+from project.views.auth import auth_app
+from project.views.posts import posts_app
+from project.views.users import users_app
 
 app = Flask(__name__)
 app.config.update(
