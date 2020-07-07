@@ -1,9 +1,9 @@
 from flask import render_template, Blueprint, request, redirect, url_for, flash
 from flask_login import login_user, logout_user
 
-from project.forms import LoginForm, RegistrationForm
-from project.models import User
-from project.models import Session
+from forms.auth import LoginForm, RegistrationForm
+from models.user import User
+from models.db import Session
 
 auth_app = Blueprint("auth_app", __name__)
 

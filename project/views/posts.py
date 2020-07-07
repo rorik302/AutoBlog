@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import current_user
 
-from project.forms import PostForm
-from project.models import Post
-from project.models import Session
+from forms.posts import PostForm
+from models.post import Post
+from models.db import Session
 
 posts_app = Blueprint("posts_app", __name__)
 

@@ -2,8 +2,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired
 
-from project.models import User
-from project.models import Session
+from models.user import User
+from models.db import Session
 
 
 class AuthForm(FlaskForm):

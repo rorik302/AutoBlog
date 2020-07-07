@@ -3,8 +3,8 @@ from datetime import datetime
 from sqlalchemy import Column, String, Text, DateTime, Integer, ForeignKey
 from sqlalchemy.orm import relationship
 
-from project.models import User
-from project.models import Base
+from .user import User
+from .base import Base
 
 
 class Post(Base):
