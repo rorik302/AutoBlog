@@ -8,6 +8,11 @@ from models.db import Session
 posts_app = Blueprint("posts_app", __name__)
 
 
+@posts_app.route("/post_<int:post_id>/", endpoint="post")
+def read_post(post_id):
+    post = Session.query(Post).filter_by(id=post_id).first()
+    return render_template("posts/post_read.html", post=post)
+
 @posts_app.route("/create/", methods=["GET", "POST"], endpoint="create")
 def create_post():
     form = PostForm()

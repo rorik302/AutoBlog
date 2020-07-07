@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Пост {{ post.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header bg-transparent text-center font-weight-bold">{{ post.title }}</div>
+        <div class="card-img-top">
+            <img src="{{ post.image_url }}" alt="" class="w-100">
+        </div>
+        <div class="card-body">
+            {{ post.text }}
+        </div>
+    </div>
+{% endblock %}

@@ -32,7 +32,7 @@
                         {% endif %}">
                 </div>
                 <div class="post-text">
-                    <p>{{ post.text[:300] }} ... <a href="#">Читать полностью</a></p>
+                    <p>{{ post.text[:300] }} ... <a href="{{ url_for('posts_app.post', post_id=post.id) }}">Читать полностью</a></p>
                 </div>
             </div>
             <div class="post-footer">
