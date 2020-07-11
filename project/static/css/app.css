@@ -1,5 +1,19 @@
 body {
-  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0;
 }
 
-/*# sourceMappingURL=app.css.map */
+.background {
+  background-image: url("../img/background.jpg");
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+.divider {
+  border-top: 1px solid #ced4da;
+  width: 100%;
+}

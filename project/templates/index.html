@@ -1,44 +1,43 @@
 {% extends 'base.html' %}
 
 {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/posts.css') }}">
 {% endblock %}
 
-{% block body %}
-    {% for post in posts %}
-        <div class="post">
-            <div class="post-header">
-                {{ post.title }}
-                {% if current_user == post.user %}
-                    <a href="{{ url_for("posts_app.update", post_id=post.id) }}"
-                       class="post-edit btn btn-sm btn-outline-primary">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                  d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"></path>
-                            <path fill-rule="evenodd"
-                                  d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"></path>
-                        </svg>
-                    </a>
-                {% endif %}
-            </div>
-            <div class="post-body">
-                <div class="post-image">
-                    <img alt="" src="
-                        {% if post.image_url %}
-                            {{ post.image_url }}
-                        {% else %}
-                            {{ url_for('static', filename='img/car-icon-md.png') }}
-                        {% endif %}">
-                </div>
-                <div class="post-text">
-                    <p>{{ post.text[:300] }} ... <a href="{{ url_for('posts_app.post', post_id=post.id) }}">Читать полностью</a></p>
-                </div>
-            </div>
-            <div class="post-footer">
-                <span>Добавил пользователь: {{ post.user.username }}, {{ post.created.strftime('%d.%m.%Y %H:%M') }}</span>
-            </div>
-        </div>
-    {% endfor %}
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
 
+{% block body %}
+    <main class="posts-container">
+        <div class="posts">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="post__header">
+                        {{ post.title }}
+                        {% if current_user == post.user %}
+                            <a href="{{ url_for('posts_app.update', post_id=post.id) }}" class="edit-btn">Редактировать</a>
+                        {% endif %}
+                    </div>
+                    <div class="post__body">
+                        <div class="post__image">
+                            {% if post.image_url %}
+                                <img src="{{ post.image_url }}" alt="">
+                            {% else %}
+                                <img src="{{ url_for('static', filename='car-icon-md.png') }}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="post__text">
+                            {{ post.text[:500] }}...
+                            <a href="{{ url_for('posts_app.post', post_id=post.id) }}">Читать полностью</a>
+                        </div>
+                    </div>
+                    <div class="post__footer">
+                        <span>Добавлено пользователем {{ post.user.username }}, {{ post.created.strftime('%d.%m.%Y %H:%M') }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
 {% endblock %}

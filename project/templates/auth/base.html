@@ -1,32 +1,44 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+{% extends 'base.html' %}
+
+{% block css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/alerts.css') }}">
-    <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% endblock %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        <ul class="alerts-container">
-            {% for category, message in messages %}
-                <li class="alert alert-{{ category }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
+{% block body %}
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-card__header">{% block header %}{% endblock %}</div>
+            <form method="post">
+                {{ form.csrf_token }}
+                <div class="auth-card__body">
+                    {% if form.errors %}
+                        <div class="auth-card__errors">
+                            {% for field in form.errors %}
+                                {% for error in form.errors[field] %}
+                                    <span class="auth-card__error">{{ error }}</span>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
 
-<div class="auth-container">
-    <div class="card auth-card">
-        <div class="card-header text-center">{% block header %}{% endblock %}</div>
-        <div class="card-body">{% block body %}{% endblock %}</div>
+                    {% for field in form if field.name != 'csrf_token' %}
+                        <div class="auth-card__row{% if loop.last %} mb-0{% endif %}">
+                            <div class="auth-card__label">
+                                {{ field.label }}
+                            </div>
+                            <div class="auth-card__input">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="auth-card__footer">
+                    {% block footer %}{% endblock %}
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}

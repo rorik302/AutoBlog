@@ -1,49 +1,105 @@
-$border-radius: 0.25rem;
-$border-style: 1px solid #ced4da;
-
+.posts-container {
+  display: flex;
+  justify-content: center;;
+}
+.posts {
+  width: 50%;
+}
 .post {
+  background-color: white;
   border: 1px solid #ced4da;
-  border-radius: $border-radius;
-  margin-bottom: 1rem;
-  .post-body {
-    display: flex;
-  }
-  .post-header {
-    padding: .25rem;
-    font-size: 1.35rem;
+  border-radius: .25rem;
+  margin-bottom: 2rem;
+  .post__header {
+    position: relative;
+    padding: .5rem;
     text-align: center;
-    border-bottom: $border-style;
-    background-color: rgba(0, 0, 0, .05);
-    .post-edit {
-      float: right;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    border-bottom: 1px solid #ced4da;
+  }
+  .post__body {
+    display: flex;
+    max-height: 200px;
+    .post__image {
+      width: 33.333%;
+      padding: .25rem;
+      border-right: 1px solid #ced4da;
+      img {
+        border-radius: .25rem;
+        max-width: 100%;
+      }
+    }
+    .post__text {
+      width: 66.666%;
+      padding: .25rem;
+      font-size: .9rem;
     }
   }
-  .post-image {
-    max-width: 25%;
-    padding: 0.25rem;
-    border-right: $border-style;
-    & > img {
-      display: block;
-      width: 100%;
-      border-radius: $border-radius;
-    }
-  }
-  .post-text {
-    padding: .25rem;
-    width: 100%;
-    word-break: break-word;
-  }
-  .post-footer {
-    border-top: $border-style;
-    padding: 0 .5rem;
-    font-size: .65rem;
+  .post__footer {
+    border-top: 1px solid #ced4da;
+    padding: .2rem .5rem;
+    font-size: .8rem;
   }
 }
-.image-wrapper {
-  .post-image {
-    max-width: 200px;
-    margin-top: 1rem;
-    border: $border-style;
-    border-radius: $border-radius;
+
+.post-form {
+  background-color: white;
+  border-radius: .25rem;
+  padding: 2rem;
+  width: 50%;
+  .post-form__row {
+    margin-bottom: 1rem;
+  }
+  .post-form__label {
+    font-weight: bolder;
+  }
+  .post-form__field {
+    input, textarea {
+      width: 100%;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      padding: .5rem;
+      box-sizing: border-box;
+    }
+  }
+  .post-form__image {
+    max-width: 250px;
+    margin-top: .5rem;
+    &.hidden {
+      display: none;
+    }
+    img {
+      width: 100%;
+      border-radius: .25rem;
+    }
+  }
+  .post-form__footer {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.post-card {
+  width: 50%;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  .post-card__header {
+    padding: .5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bolder;
+    border-bottom: 1px solid #ced4da;
+  }
+  .post-card__body {
+    padding: 2rem;
+    .post-card__image {
+      img {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
   }
 }

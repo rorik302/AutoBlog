@@ -11,7 +11,7 @@ posts_app = Blueprint("posts_app", __name__)
 @posts_app.route("/post_<int:post_id>/", endpoint="post")
 def read_post(post_id):
     post = Session.query(Post).filter_by(id=post_id).first()
-    return render_template("posts/post_read.html", post=post)
+    return render_template("posts/read.html", post=post)
 
 @posts_app.route("/create/", methods=["GET", "POST"], endpoint="create")
 def create_post():
@@ -26,7 +26,7 @@ def create_post():
         Session.add(post)
         Session.commit()
         return redirect(url_for("main"))
-    return render_template("posts/post_create.html", form=form)
+    return render_template("posts/create.html", form=form)
 
 
 @posts_app.route("/<int:post_id>/update/", methods=["GET", "POST"], endpoint="update")
@@ -40,4 +40,4 @@ def update_post(post_id):
 
         Session.commit()
         return redirect(url_for("main"))
-    return render_template("posts/post_update.html", form=form, post_id=post.id)
+    return render_template("posts/update.html", form=form, post_id=post.id)

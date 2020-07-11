@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/posts.css') }}">
+{% endblock %}
+
+{% block title %}Пост{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block body %}
+    <div class="posts-container">
+        <div class="post-card">
+            <div class="post-card__header">{{ post.title }}</div>
+
+            <div class="post-card__body">
+                {% if post.image_url %}
+                    <div class="post-card__image">
+                        <img src="{{ post.image_url }}" alt="">
+                    </div>
+                {% endif %}
+
+                <div class="post-card__text">
+                    {{ post.text }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

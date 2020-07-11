@@ -1,29 +1,44 @@
 {% extends 'base.html' %}
 
 {% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/posts.css') }}">
 {% endblock %}
 
-{% block body %}
-    <div class="card">
-        <div class="card-body">
-            <form method="post" action="{% block form_action %}{% endblock %}">
-                {{ form.csrf_token }}
-                {% for field in form if field.name != 'csrf_token' %}
-                    <div class="form-group">
-                        <label>{{ field.label }}</label>
-                        {% if field.name != 'image_url' %}
-                            {{ field(class_='form-control') }}
-                        {% else %}
-                            <div class="image-wrapper">
-                                {{ field(class_='form-control image-url') }}
-                                <img src="{{ field.data }}" alt="" class="post-image">
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
 
-                <button type="submit" class="btn btn-success btn-block">Сохранить</button>
+{% block body %}
+    <div class="posts-container">
+        <div class="post-form">
+            <form method="post">
+                {{ form.csrf_token }}
+
+                <div class="post-form__body">
+                    {% for field in form if field.name != 'csrf_token' %}
+                        <div class="post-form__row">
+                            <div class="post-form__label">
+                                {{ field.label }}
+                            </div>
+                            <div class="post-form__field">
+                                {{ field }}
+                            </div>
+                            {% if field.name == 'image_url' %}
+                                <div class="post-form__image{% if field == '' %} hidden{% endif %}">
+                                    <img src="{{ field.data }}" alt="">
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="post-form__footer">
+                    <input type="submit" class="submit" value="Сохранить">
+                </div>
             </form>
         </div>
     </div>
@@ -31,12 +46,14 @@
 
 {% block js %}
     <script>
-        const imageField = document.querySelector('.image-url')
-        const image = document.querySelector('.image-wrapper img')
-        imageField.addEventListener('focusout', function () {
-            url = imageField.value
-            image.setAttribute('src', url)
+        const imageUrl = document.querySelector('#image_url');
+        imageUrl.addEventListener('focusout', function () {
+            if (imageUrl.value.length > 0) {
+                const formImage = document.querySelector('.post-form__image');
+                const image = formImage.querySelector('img');
+                image.src = imageUrl.value;
+                formImage.classList.remove('hidden');
+            }
         })
-        console.log(imageField)
     </script>
 {% endblock %}

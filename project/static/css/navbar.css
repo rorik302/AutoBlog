@@ -1,0 +1,29 @@
+.navbar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar {
+  height: 75px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.navbar .navbar__logo {
+  height: 50%;
+}
+.navbar .navbar__logo img {
+  max-height: 100%;
+}
+.navbar .navbar-auth {
+  margin-left: auto;
+}
+.navbar .navbar-auth a {
+  padding: 0.5rem 0.75rem;
+  text-decoration-line: none;
+  color: white;
+}
+.navbar .navbar-auth a:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}

@@ -2,38 +2,10 @@
 
 {% block title %}Авторизация{% endblock %}
 
-{% block header %}
-    <span class="h5">Авторизация</span>
-{% endblock %}
+{% block header %}Авторизация{% endblock %}
 
-{% block body %}
-    {% if form.errors %}
-        <div class="alert alert-danger">
-            {% for field in form.errors %}
-                {% for error in form.errors[field] %}
-                    <span class="row m-0">{{ error }}</span>
-                {% endfor %}
-            {% endfor %}
-        </div>
-    {% endif %}
+{% block footer %}
+    <input type="submit" class="auth-card__submit submit" value="Войти">
 
-    <form method="post">
-        {{ form.csrf_token }}
-
-        {% for field in form if field.name != 'csrf_token' %}
-            <div class="form-group">
-                <label for="{{ field.id }}">{{ field.label }}</label>
-                {{ field(class_="form-control") }}
-            </div>
-        {% endfor %}
-
-        <hr>
-
-        <input type="submit" value="Войти" class="btn btn-success btn-block">
-    </form>
-
-    <div class="small mt-2 text-center">
-        <span>Нет аккаунта?</span>
-        <a href="{{ url_for('auth_app.registration') }}">Зарегистрироваться</a>
-    </div>
+    <span class="footer-text">Нет аккаунта? <a href="{{ url_for('auth_app.registration') }}">Зарегистрироваться</a></span>
 {% endblock %}

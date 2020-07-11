@@ -1,0 +1,35 @@
+.user-card-container {
+  display: flex;
+  justify-content: center;
+}
+.user-card {
+  width: 50%;
+  background-color: white;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  .user-card__header {
+    text-align: center;
+    padding: .5rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid #ced4da;
+  }
+  .user-card__body {
+    padding: 2rem;
+    .user-card__row {
+      display: flex;
+      width: 100%;
+      .user-card__label {
+        width: 33.333%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .user-card__field {
+        width: 66.666%;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        padding: .5rem;
+      }
+    }
+  }
+}

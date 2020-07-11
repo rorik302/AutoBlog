@@ -1,19 +1,28 @@
 {% extends "base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/users.css') }}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
 {% block title %}
     Профиль пользователя {{ user.username }}
 {% endblock %}
 
 {% block body %}
-    <div class="card">
-        <div class="card-header">
-            <span>Профиль пользователя <strong>{{ user.username }}</strong></span>
-        </div>
-        <div class="card-body">
-            <div class="form-group row m-0">
-                <label class="col-sm-2 col-form-label">Логин</label>
-                <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" value={{ user.username }}>
+    <div class="user-card-container">
+        <div class="user-card">
+            <div class="user-card__header">
+                <span>Профиль пользователя <strong>{{ user.username }}</strong></span>
+            </div>
+            <div class="user-card__body">
+                <div class="user-card__row">
+                    <label class="user-card__label">Логин</label>
+                    <input type="text" readonly class="user-card__field" value={{ user.username }}>
                 </div>
             </div>
         </div>

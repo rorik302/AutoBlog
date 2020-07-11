@@ -1,10 +1,85 @@
-.auth-container {
+.auth-wrapper {
   height: 100vh;
   display: flex;
-  background-color: rgba(0, 0, 0, .05);
   .auth-card {
     margin: auto;
-    min-width: 400px;
-    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, .1);
+    min-width: 700px;
+    border-radius: 1rem;
+    box-shadow: 0 3px 10px 3px rgba(0, 0, 0, .3);
+    .auth-card__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      text-shadow: 0 0 10px black;
+      height: 100px;
+      background-image: url("../img/auth-header.jpg");
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      border-radius: 1rem 1rem 0 0;
+    }
+    .auth-card__body {
+      padding: 2rem;
+      background: #ffffff;
+      .auth-card__errors {
+        padding: .3rem .75rem;
+        margin-bottom: 1rem;
+        background-color: rgba(255, 5, 0, 0.16);
+        border: 1px solid rgba(255, 0, 0, 0.2);
+        border-radius: .25rem;
+        .auth-card__error {
+          display: block;
+          font-size: .85rem;
+          color: #ff0500;
+          text-shadow: 0 0 2px grey;
+        }
+      }
+      .auth-card__row {
+        display: flex;
+        width: 100%;
+        margin-bottom: 1rem;
+        &.mb-0 {
+          margin-bottom: 0;
+        }
+        .auth-card__label {
+          width: 33.333%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .auth-card__input {
+          width: 66.666%;
+          input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: .5rem;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+          }
+        }
+      }
+    }
+    .auth-card__footer {
+      padding: 1rem 2rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 0 1rem 1rem;
+      .footer-text {
+        width: 100%;
+        margin-top: .5rem;
+        text-align: center;
+        font-size: .8rem;
+        a {
+          text-decoration-line: none;
+        }
+      }
+    }
+    .auth-card__submit {
+      min-width: 150px;
+    }
   }
 }
