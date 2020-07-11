@@ -1,3 +1,5 @@
 from sqlalchemy import create_engine
 
-engine = create_engine('sqlite:///blog.db')
+from config import DB_URL
+
+engine = create_engine(DB_URL)

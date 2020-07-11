@@ -1,9 +1,9 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 
-from .models.post import Post
-from .models.user import User
-from .models.db import Session
+from models.post import Post
+from models.user import User
+from models.db import Session
 from views.auth import auth_app
 from views.posts import posts_app
 from views.users import users_app
