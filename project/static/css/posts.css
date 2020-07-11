@@ -38,6 +38,7 @@
   width: 66.666%;
   padding: 0.25rem;
   font-size: 0.9rem;
+  overflow-wrap: anywhere;
 }
 .post .post__footer {
   border-top: 1px solid #ced4da;
