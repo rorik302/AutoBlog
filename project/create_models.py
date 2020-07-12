@@ -1,4 +1,8 @@
 from models.base import Base
 
-if __name__ == '__main__':
+
+def create_models():
     Base.metadata.create_all()
+
+if __name__ == '__main__':
+    create_models()
