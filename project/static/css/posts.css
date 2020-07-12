@@ -12,6 +12,7 @@
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   margin-bottom: 2rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
 }
 .post .post__header {
   position: relative;
@@ -27,18 +28,20 @@
 }
 .post .post__body .post__image {
   width: 33.333%;
-  padding: 0.25rem;
   border-right: 1px solid #ced4da;
+  overflow: hidden;
+  padding: 0.25rem;
 }
 .post .post__body .post__image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
   border-radius: 0.25rem;
-  max-width: 100%;
 }
 .post .post__body .post__text {
   width: 66.666%;
   padding: 0.25rem;
   font-size: 0.9rem;
-  overflow-wrap: anywhere;
 }
 .post .post__footer {
   border-top: 1px solid #ced4da;
@@ -51,6 +54,7 @@
   border-radius: 0.25rem;
   padding: 2rem;
   width: 50%;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
 }
 .post-form .post-form__row {
   margin-bottom: 1rem;
@@ -87,6 +91,7 @@
   background-color: white;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
 }
 .post-card .post-card__header {
   padding: 0.5rem;

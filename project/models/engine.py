@@ -3,4 +3,4 @@ from sqlalchemy import create_engine
 from config import DB_URL
 
 engine = create_engine(DB_URL)
-# engine = create_engine("sqlite:///app.db")
+# engine = create_engine("sqlite:///project/app.db")

@@ -6,7 +6,7 @@
   margin: auto;
   min-width: 700px;
   border-radius: 1rem;
-  box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
 }
 .auth-wrapper .auth-card .auth-card__header {
   display: flex;
