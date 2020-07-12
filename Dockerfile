@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM python:3.8.3-slim
 
 WORKDIR /app
 

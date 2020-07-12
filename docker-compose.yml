@@ -10,11 +10,18 @@ services:
     build:
       context: .
     ports:
-      - 3000:80
+      - 5000:5000
     volumes:
       - ./db:/app/db
     environment:
-      FLASK_APP: main
+      FLASK_APP: app
+    entrypoint:
+      - "sh"
+      - "entrypoint.sh"
+    command:
+      - "flask"
+      - "run"
+      - "--host=0.0.0.0"
     depends_on:
       - pg
 

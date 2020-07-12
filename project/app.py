@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask_login import LoginManager
 
-from create_models import create_models
 from models.post import Post
 from models.user import User
 from models.db import Session
@@ -41,4 +40,3 @@ def remove_session(*args):
 
 if __name__ == '__main__':
     app.run()
-    create_models()
