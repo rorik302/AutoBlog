@@ -4,7 +4,7 @@
 `sudo docker-compose build`
  
 При первом запуске нужно выполнить команду для инициализации проекта и БД  
-`sudo docker-compose up -d $$ docker-compose down`
+`sudo docker-compose up -d && docker-compose down`
 
 Дальнейшие запуски можно производить командой  
 `sudo docker-compose up [-d]`
